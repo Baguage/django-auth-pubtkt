@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name = "django-auth-pubtkt",
-    version = "0.0.8",
+    version = "0.0.9",
     author = "Alexander Vyushkov",
     author_email = "alex.vyushkov@gmail.com",
     description = ("Implementation of mod_auth_pubtkt as Django middleware"),
@@ -18,6 +18,7 @@ setup(
     url = "http://packages.python.org/django-auth-pubtkt",
     packages=['django_auth_pubtkt', 'tests'],
     long_description=read('README'),
+    install_requires=[" M2Crypto"],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Web Environment",
