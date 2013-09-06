@@ -79,7 +79,7 @@ class Authpubtkt(object):
             if ticket_keys['validuntil'] < time.time():
                 # Ticket expired
                 return None
-        except KeyError as e:
+        except KeyError:
             # No expiration time
             return None
 

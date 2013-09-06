@@ -12,7 +12,7 @@ setup(
     version = "0.0.9",
     author = "Alexander Vyushkov",
     author_email = "alex.vyushkov@gmail.com",
-    description = ("Implementation of mod_auth_pubtkt as Django middleware"),
+    description = "Implementation of mod_auth_pubtkt as Django middleware",
     license = "BSD",
     keywords = "django auth mod_auth_pubtkt",
     url = "https://github.com/Baguage/django-auth-pubtkt",

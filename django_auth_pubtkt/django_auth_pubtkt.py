@@ -21,11 +21,11 @@ import urllib
 from . import Authpubtkt
 
 class DjangoAuthPubtkt(object):
-    ''' Django middleware for mod_auth_pubtkt SSO '''
+    """ Django middleware for mod_auth_pubtkt SSO """
 
     def __init__(self):
 
-        ''' Read configuration options from settings.py '''
+        """ Read configuration options from settings.py """
         try:
             self.authpubtkt = Authpubtkt(settings.TKT_AUTH_PUBLIC_KEY)
         except AttributeError:
@@ -35,15 +35,15 @@ class DjangoAuthPubtkt(object):
         self.TKT_AUTH_USE_GROUPS = getattr(settings, "TKT_AUTH_USE_GROUPS", False)
 
     def add_user_to_group(self, user, group_name):
-        ''' Add user to a group
-        '''
+        """ Add user to a group
+        """
         group, _ = Group.objects.get_or_create(name = group_name)
         group.user_set.add(user)
         pass
 
     def process_request(self, request):
         cookie = request.COOKIES.get(self.TKT_AUTH_COOKIE_NAME, None)
-        if cookie == None:
+        if cookie is None:
             # User not authenticated
             return None
 
