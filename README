@@ -1,0 +1,28 @@
+==================================================
+django-auth-pubtkt
+==================================================
+Author: Alexander Vyushkov
+
+Implementation of mod_auth_pubtkt as Django middleware.
+This version was tested on Python == 2.7, Django == 1.5
+
+==================================================
+Installation:
+==================================================
+./setup.py install
+Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES
+
+==================================================
+Configuration variables
+==================================================
+TKT_AUTH_PUBLIC_KEY
+Default value: None
+Filename of DSA public key in .pem format. It is used to verify ticket signature
+
+TKT_AUTH_COOKIE_NAME
+Default value: "auth_pubtkt"
+Name of the authentication cookie to use
+
+TKT_AUTH_USE_GROUPS
+Default value: False
+Treat tokens as group names. Create groups if they don't exist yet.
