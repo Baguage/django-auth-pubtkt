@@ -15,7 +15,7 @@ setup(
     description = ("Implementation of mod_auth_pubtkt as Django middleware"),
     license = "BSD",
     keywords = "django auth mod_auth_pubtkt",
-    url = "http://packages.python.org/django-auth-pubtkt",
+    url = "https://github.com/Baguage/django-auth-pubtkt",
     packages=['django_auth_pubtkt', 'tests'],
     long_description=read('README'),
     install_requires=[" M2Crypto"],
