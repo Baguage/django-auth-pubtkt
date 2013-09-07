@@ -18,7 +18,7 @@ setup(
     url = "https://github.com/Baguage/django-auth-pubtkt",
     packages=['django_auth_pubtkt', 'tests'],
     long_description=read('README'),
-    install_requires=[" M2Crypto"],
+    install_requires=[" M2Crypto", "Django >= 1.3",],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Web Environment",
