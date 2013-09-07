@@ -26,6 +26,6 @@ setup(
         "Framework :: Django",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
         "Topic :: Software Development :: Libraries :: Python Modules",
-        "License :: OSI Approved :: BSD License",
+        "License :: OSI Approved :: Apache Software License",
     ],
 )
