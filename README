@@ -9,12 +9,35 @@ This version was tested on Python == 2.7, Django == 1.5
 ==================================================
 Installation:
 ==================================================
+django-auth-pubtkt uses M2Crypto library. Installation instructions for
+different platforms are below.
+When M2Crypto is installed, django-auth-pubtkt can be installed using pip
+pip install django-auth-pubtkt
+or using setuptools
 ./setup.py install
-Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES
+
+Windows
+==================================================
+Use binary package available on http://chandlerproject.org/Projects/MeTooCrypto#Downloads
+
+CentOS/RedHat/Fedora
+==================================================
+Fedora Core (and RedHat, CentOS etc.) have made changes to OpenSSL
+configuration compared to many other Linux distributions. If you can not
+build M2Crypto normally, try the fedora_setup.sh script included with
+M2Crypto sources.
+
+pip install --download=/tmp M2Crypto
+cd /tmp
+tar -zxf /tmp/M2Crypto-0.21.1.tar.gz
+cd M2Crypto-0.21.1
+./fedora_setup.sh install
 
 ==================================================
-Configuration variables
+Configuration
 ==================================================
+Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES
+
 TKT_AUTH_PUBLIC_KEY
 Default value: None
 Filename of DSA public key in .pem format. It is used to verify ticket signature
