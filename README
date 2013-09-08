@@ -37,15 +37,21 @@ cd M2Crypto-0.21.1
 Configuration
 ==================================================
 Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES
+Change LOGIN_URL to address of SSO login page
+Configure your SSO to use 'next' as redirect field name
+or
+use @method_decorator(login_required(redirect_field_name="back"))
+
+Configuration variables (settings.py)
 
 TKT_AUTH_PUBLIC_KEY
-Default value: None
-Filename of DSA public key in .pem format. It is used to verify ticket signature
+Default: None
+Filename of DSA public key in .pem format. It is used to verify ticket signature.
 
 TKT_AUTH_COOKIE_NAME
-Default value: "auth_pubtkt"
-Name of the authentication cookie to use
+Default: "auth_pubtkt"
+Name of the authentication cookie to use.
 
 TKT_AUTH_USE_GROUPS
-Default value: False
+Default: False
 Treat tokens as group names. Create groups if they don't exist yet.
