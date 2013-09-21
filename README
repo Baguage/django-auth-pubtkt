@@ -37,7 +37,14 @@ cd M2Crypto-0.21.1
 Configuration
 ==================================================
 Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES
-Change LOGIN_URL to address of SSO login page
+Change LOGIN_URL to "/sso/"
+Set TKT_AUTH_LOGIN_URL to the address of SSO login page
+Add piece of code below to urls.py
+from django_auth_pubtkt.views import redirect_to_sso
+url('^sso/', redirect_to_sso),
+
+OR
+Change LOGIN_URL to the address of SSO login page
 Configure your SSO to use 'next' as redirect field name
 or
 use @method_decorator(login_required(redirect_field_name="back"))
@@ -55,3 +62,11 @@ Name of the authentication cookie to use.
 TKT_AUTH_USE_GROUPS
 Default: False
 Treat tokens as group names. Create groups if they don't exist yet.
+
+TKT_AUTH_LOGIN_URL
+Default: None
+URL that users without a valid ticket will be redirected to
+
+TKT_AUTH_BACK_ARG_NAME
+Default: "back"
+Name of the GET argument with the originally requested URL (when redirecting to the login page)
