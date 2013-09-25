@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name = "django-auth-pubtkt",
-    version = "1.0.0",
+    version = "1.0.2",
     author = "Alexander Vyushkov",
     author_email = "alex.vyushkov@gmail.com",
     description = "Implementation of mod_auth_pubtkt as Django middleware",
