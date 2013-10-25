@@ -16,7 +16,7 @@
 #   limitations under the License.
 
 
-from M2Crypto import RSA, DSA
+from M2Crypto import RSA, DSA, RSA
 import hashlib, time, base64
 import urllib
 
@@ -27,7 +27,12 @@ class Authpubtkt(object):
     def __init__(self, filename=None, pub_key=None):
         if filename:
             self.filename = file
-            pub_key = DSA.load_pub_key(filename)
+            try:
+                pub_key = DSA.load_pub_key(filename)
+            except DSA.DSAError:
+                pass
+            if pub_key is None:
+                pub_key = RSA.load_pub_key(filename)
 
         if pub_key is None:
             raise ValueError("Please specify filename or public key")
