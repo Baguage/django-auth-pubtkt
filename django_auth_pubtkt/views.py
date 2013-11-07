@@ -20,7 +20,10 @@ import urllib
 
 def redirect_to_sso(request):
     back = request.is_secure() and 'https://' or 'http://'
-    back = back + request.get_host() + request.GET["next"]
+    if request.GET["next"][:4] != "http":
+        back = back + request.get_host() + request.GET["next"]
+    else:
+        back = request.GET["next"]
     back = urllib.quote_plus(back)
     try:
         TKT_AUTH_BACK_ARG_NAME = settings.TKT_AUTH_BACK_ARG_NAME
