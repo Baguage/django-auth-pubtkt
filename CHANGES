@@ -1,4 +1,6 @@
-v1.1.0 - 2013-10-24
+v1.1.0 - 2013-12-22
+[*] Fixed bug with redirection if fully-qualified URI is used in 'next' parameter
+[+] Added loading of RSA public keys
 [+] Added /sso view to urls.py
 
 v1.0.0 - 2013-09-24
