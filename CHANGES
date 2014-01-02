@@ -1,3 +1,6 @@
+v1.1.1 - 2014-01-02
+[+] If no auth_pubtkt cookie is found, request.user is set to django.contrib.auth.models.AnonymousUser
+
 v1.1.0 - 2013-12-22
 [*] Fixed bug with redirection if fully-qualified URI is used in 'next' parameter
 [+] Added loading of RSA public keys

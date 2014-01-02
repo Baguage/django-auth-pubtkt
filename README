@@ -76,3 +76,8 @@ URL that users without a valid ticket will be redirected to
 TKT_AUTH_BACK_ARG_NAME
 Default: "back"
 Name of the GET argument with the originally requested URL (when redirecting to the login page)
+
+TKT_AUTH_ANONYMOUS_USER
+Default: True
+Add AnonymousUser object if no auth_pubtkt cookie is found. If set, django_auth_pubtkt can be used as a replacement to AuthenticationMiddleware.
+If disabled, AuthenticationMiddleware and django_auth_pubtkt can be used together.

@@ -15,7 +15,7 @@
 #   limitations under the License.
 
 __author__ = 'Alexander Vyushkov'
-__version__ = '0.0.9'
+__version__ = '1.1.1'
 
 from .auth_pubtkt import Authpubtkt
 from .django_auth_pubtkt import DjangoAuthPubtkt

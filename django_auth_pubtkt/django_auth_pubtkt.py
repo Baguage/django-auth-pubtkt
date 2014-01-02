@@ -14,7 +14,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User, Group, AnonymousUser
 from django.http import HttpResponsePermanentRedirect
 from django.conf import settings
 import urllib
@@ -33,6 +33,7 @@ class DjangoAuthPubtkt(object):
 
         self.TKT_AUTH_COOKIE_NAME = getattr(settings, "TKT_AUTH_COOKIE_NAME", "auth_pubtkt")
         self.TKT_AUTH_USE_GROUPS = getattr(settings, "TKT_AUTH_USE_GROUPS", False)
+        self.TKT_AUTH_ANONYMOUS_USER = getattr(settings, "TKT_AUTH_ANONYMOUS_USER", True)
 
     def add_user_to_group(self, user, group_name):
         """ Add user to a group
@@ -43,14 +44,16 @@ class DjangoAuthPubtkt(object):
 
     def process_request(self, request):
         cookie = request.COOKIES.get(self.TKT_AUTH_COOKIE_NAME, None)
+        if self.TKT_AUTH_ANONYMOUS_USER:
+            request.user = AnonymousUser()
+
         if cookie is None:
-            # User not authenticated
-            return None
+            # User is not authenticated
+            return
 
         cookie = urllib.unquote(cookie)
         params = self.authpubtkt.verify_cookie(cookie)
         if params is not None:
-
             username = params["uid"]
             user, _ = User.objects.get_or_create(username = username)
             request.user = user
@@ -59,5 +62,5 @@ class DjangoAuthPubtkt(object):
                 user.groups.clear()
                 for token in params["tokens"].split(","):
                     self.add_user_to_group(user, token)
-        #return HttpResponsePermanentRedirect("http://google.com")
+
         return None
