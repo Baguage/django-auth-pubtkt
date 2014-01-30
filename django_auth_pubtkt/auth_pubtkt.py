@@ -52,7 +52,13 @@ class Authpubtkt(object):
                 return False
             return True
         if isinstance(self.pub_key, DSA.DSA_pub):
-            return self.pub_key.verify_asn1(digest, signature)
+            try:
+                return self.pub_key.verify_asn1(digest, signature)
+            except DSA.DSAError as e:
+                if hasattr(self, "debug"):
+                    print "Exception in function self.pub_key.verify_asn1(digest, signature). File %s" % (__file__)
+                    print "%s" % e
+                return False
         # Unknown key type
         return False
 
