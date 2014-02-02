@@ -43,7 +43,13 @@ class Authpubtkt(object):
 
     def verify_ticket_signature(self, data, sig):
         """Verify ticket signature. """
-        signature = base64.b64decode(sig)
+        try:
+            signature = base64.b64decode(sig)
+        except TypeError as e:
+            if hasattr(self, "debug"):
+                    print "Exception in function base64.b64decode. File %s" % (__file__)
+                    print "%s" % e
+            return False
         digest = hashlib.sha1(data).digest()
         if isinstance(self.pub_key, RSA.RSA_pub):
             try:
