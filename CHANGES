@@ -1,6 +1,6 @@
 v1.1.2 - 2014-01-02
 [*] Fixed unhandled DSAError exception in verify_ticket_signature function
-
+[*] Fixed unhandled TypeError exception in verify_ticket_signature function
 v1.1.1 - 2014-01-02
 [+] If no auth_pubtkt cookie is found, request.user is set to django.contrib.auth.models.AnonymousUser
 

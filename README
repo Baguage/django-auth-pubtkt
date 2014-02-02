@@ -29,7 +29,7 @@ configuration compared to many other Linux distributions. If you can not
 build M2Crypto normally, try the fedora_setup.sh script included with
 M2Crypto sources.
 
-pip install --download=/tmp M2Crypto
+pip install --download=/tmp M2Crypto==0.21.1
 cd /tmp
 tar -zxf /tmp/M2Crypto-0.21.1.tar.gz
 cd M2Crypto-0.21.1
