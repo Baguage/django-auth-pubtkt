@@ -1,17 +1,14 @@
-from django.conf import settings
-from django.template import Template, Context
 from django.test.testcases import TestCase
-from django.test.utils import override_settings
-from django.core.urlresolvers import reverse
-
 from django.http.cookie import SimpleCookie
+from django.conf import settings
+from django.urls.base import reverse
+
 
 class MiddlewareTest(TestCase):
     def test_redirect(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, "/login/")
-
+        self.assertEqual(response.url, settings.LOGIN_URL)
 
     def test_success(self):
         self.client.cookies = SimpleCookie(
@@ -22,4 +19,9 @@ class MiddlewareTest(TestCase):
         )
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.user.username, "foobar1")
+        self.assertEqual(response.content, "User: foobar")
+
+    def test_sso_url(self):
+        response = self.client.get(reverse("django_auth_pubtkt.sso"))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, settings.TKT_AUTH_LOGIN_URL)

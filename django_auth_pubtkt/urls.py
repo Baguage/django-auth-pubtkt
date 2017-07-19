@@ -16,9 +16,9 @@
 #   limitations under the License.
 
 from django_auth_pubtkt.views import redirect_to_sso
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
-urlpatterns = patterns('',
-    url('^sso/', redirect_to_sso),
-)
+urlpatterns = [
+    url('^sso/', redirect_to_sso, name="django_auth_pubtkt.sso"),
+]
 
