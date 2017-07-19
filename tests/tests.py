@@ -8,7 +8,7 @@ class MiddlewareTest(TestCase):
     def test_redirect(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, settings.LOGIN_URL)
+        self.assertEqual(response.url, settings.LOGIN_URL + "?next=/")
 
     def test_success(self):
         self.client.cookies = SimpleCookie(
