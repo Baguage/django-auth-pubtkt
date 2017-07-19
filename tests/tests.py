@@ -19,7 +19,7 @@ class MiddlewareTest(TestCase):
         )
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.content, "User: foobar")
+        self.assertEqual(response.content, "User: foobar\n")
 
     def test_sso_url(self):
         response = self.client.get(reverse("django_auth_pubtkt.sso"))
