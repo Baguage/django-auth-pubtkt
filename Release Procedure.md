@@ -22,6 +22,6 @@ rm -rf django-auth-pubtkt
 
 https://github.com/Baguage/django-auth-pubtkt/releases -> Draft a new release
 
-Use v0.6.2 format for tag name
+Use v2.0.0 format for tag name
 
 7. Run `setup.py sdist bdist_egg bdist_wininst upload` command
