@@ -37,7 +37,7 @@ MIDDLEWARE = (
 
 
 TKT_AUTH_PUBLIC_KEY = os.path.join(BASE_DIR, "tests", "dsakey", "pubkey.pem")
-
+TKT_AUTH_LOGIN_URL = "/login/"
 
 DATABASES = {
     'default': {
