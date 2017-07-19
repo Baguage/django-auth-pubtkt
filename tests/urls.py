@@ -4,5 +4,5 @@ from .views import IndexView
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name="index"),
-    include("django_auth_pubtkt.urls")
+    # include("django_auth_pubtkt.urls")
 ]
