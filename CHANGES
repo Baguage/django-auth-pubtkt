@@ -1,6 +1,11 @@
+v2.0.0 - 2017-07-17
+[+] Compatibility with Django 1.10+
+[-] Dropped support for Django versions prior to 1.10
+
 v1.1.2 - 2014-01-02
 [*] Fixed unhandled DSAError exception in verify_ticket_signature function
 [*] Fixed unhandled TypeError exception in verify_ticket_signature function
+
 v1.1.1 - 2014-01-02
 [+] If no auth_pubtkt cookie is found, request.user is set to django.contrib.auth.models.AnonymousUser
 
@@ -10,5 +15,4 @@ v1.1.0 - 2013-12-22
 [+] Added /sso view to urls.py
 
 v1.0.0 - 2013-09-24
--------------------
 [+] Initial version

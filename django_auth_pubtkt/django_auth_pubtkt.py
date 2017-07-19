@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Cpyright (c) 2013, Alexander Vyushkov
+# Copyright (c) 2013, 2017 Alexander Vyushkov
 # All rights reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +15,19 @@
 #   limitations under the License.
 
 from django.contrib.auth.models import User, Group, AnonymousUser
-from django.http import HttpResponsePermanentRedirect
 from django.conf import settings
 import urllib
-from . import Authpubtkt
 
-class DjangoAuthPubtkt(object):
+from django.utils.deprecation import MiddlewareMixin
+
+from .auth_pubtkt import Authpubtkt
+
+class DjangoAuthPubtkt(MiddlewareMixin):
     """ Django middleware for mod_auth_pubtkt SSO """
 
-    def __init__(self):
-
-        """ Read configuration options from settings.py """
+    def __init__(self, get_response=None):
+        super(DjangoAuthPubtkt, self).__init__(get_response)
+        # Read configuration options from settings.py
         try:
             self.authpubtkt = Authpubtkt(settings.TKT_AUTH_PUBLIC_KEY)
         except AttributeError:

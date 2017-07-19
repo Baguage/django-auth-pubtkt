@@ -16,6 +16,3 @@
 
 __author__ = 'Alexander Vyushkov'
 __version__ = '1.1.2'
-
-from .auth_pubtkt import Authpubtkt
-from .django_auth_pubtkt import DjangoAuthPubtkt

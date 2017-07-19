@@ -1,16 +1,16 @@
-==================================================
-django-auth-pubtkt
-==================================================
+# django-auth-pubtkt
+
 Author: Alexander Vyushkov
 
 Implementation of mod_auth_pubtkt: a pragmatic Web Single Sign-On (SSO) solution as Django middleware.
-This version was tested on Python == 2.7, Django == 1.5
+This version was tested on Python == 2.7, Django == 1.10
+ 
+It is incompatible with previous versions (use django-auth-pubtkt==1.1.2 for Django 1.5)
 
 Please refer to https://neon1.net/mod_auth_pubtkt/index.html for additional details.
  
-==================================================
-Installation:
-==================================================
+# Installation:
+
 django-auth-pubtkt uses M2Crypto library. Installation instructions for
 different platforms are below.
 When M2Crypto is installed, django-auth-pubtkt can be installed using pip
@@ -18,12 +18,12 @@ pip install django-auth-pubtkt
 or using setuptools
 ./setup.py install
 
-Windows
-==================================================
+# Windows
+
 Use binary package available on http://chandlerproject.org/Projects/MeTooCrypto#Downloads
 
-CentOS/RedHat/Fedora
-==================================================
+# CentOS 6/RedHat 6/Fedora
+
 Fedora Core (and RedHat, CentOS etc.) have made changes to OpenSSL
 configuration compared to many other Linux distributions. If you can not
 build M2Crypto normally, try the fedora_setup.sh script included with
@@ -39,10 +39,11 @@ python setup.py test
 Note that setup.py test is required in some cases to fix "ImportError: No module named __m2crypto" error. 
 lease refer to http://stackoverflow.com/questions/4773659/cant-install-a-python-package for additional details
 
-==================================================
-Configuration
-==================================================
-Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES
+CentOS 7/RedHat 7 should be fine
+
+# Configuration
+
+Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES (pre Django 1.9) or to MIDDLEWARE (Django 1.9+)
 Change LOGIN_URL to "/sso/"
 Set TKT_AUTH_LOGIN_URL to the address of SSO login page
 Add piece of code below to urls.py
@@ -55,7 +56,7 @@ Configure your SSO to use 'next' as redirect field name
 or
 use @method_decorator(login_required(redirect_field_name="back"))
 
-Configuration variables (settings.py)
+# Configuration variables (settings.py)
 
 TKT_AUTH_PUBLIC_KEY
 Default: None
