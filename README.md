@@ -3,7 +3,7 @@
 Author: Alexander Vyushkov
 
 Implementation of mod_auth_pubtkt: a pragmatic Web Single Sign-On (SSO) solution as Django middleware.
-This version was tested on Python == 2.7, Django == 1.10
+This version was tested on Python == 2.7, Django == 1.11
  
 It is incompatible with previous versions (use django-auth-pubtkt==1.1.2 for Django 1.5)
 
@@ -43,7 +43,7 @@ CentOS 7/RedHat 7 should be fine
 
 # Configuration
 
-Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE_CLASSES (pre Django 1.9) or to MIDDLEWARE (Django 1.9+)
+Add 'django_auth_pubtkt.DjangoAuthPubtkt' to MIDDLEWARE (Django 1.11+)
 Change LOGIN_URL to "/sso/"
 Set TKT_AUTH_LOGIN_URL to the address of SSO login page
 Add piece of code below to urls.py
