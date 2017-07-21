@@ -1,6 +1,6 @@
 v2.0.0 - 2017-07-17
-[+] Compatibility with Django 1.10+
-[-] Dropped support for Django versions prior to 1.10
+[+] Compatibility with Django 1.11+
+[-] Dropped support for Django versions prior to 1.11
 
 v1.1.2 - 2014-01-02
 [*] Fixed unhandled DSAError exception in verify_ticket_signature function
