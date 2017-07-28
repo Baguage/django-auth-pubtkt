@@ -14,12 +14,16 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
+
 from django.shortcuts import redirect
 from django.conf import settings
 import urllib
 
 def redirect_to_sso(request):
     back = request.is_secure() and 'https://' or 'http://'
+    next = request.GET.get("next", None)
+    if next is None:
+        raise RuntimeError("next parameter must be provided to redirect_to_sso view")
     if request.GET["next"][:4] != "http":
         back = back + request.get_host() + request.GET["next"]
     else:
