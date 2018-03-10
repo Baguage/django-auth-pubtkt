@@ -1,3 +1,6 @@
+v2.0.1 - 2018-10-03
+[*] Fixed installation bug (missing README.md)
+
 v2.0.0 - 2018-10-03
 [+] Compatibility with Django 1.11+
 [+] Python 3.5 support
