@@ -28,6 +28,11 @@ or using setuptools
 
 Use binary package available on http://chandlerproject.org/Projects/MeTooCrypto#Downloads
 
+# RedHat 7 + Python 3.5
+
+I got "Failed building wheel for m2crypto" when used "pip install m2crypto" command.
+The library was installed successfully, and all tests passed, somehow.
+
 # CentOS 6/RedHat 6/Fedora
 
 Fedora Core (and RedHat, CentOS etc.) have made changes to OpenSSL
