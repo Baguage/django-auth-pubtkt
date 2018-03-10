@@ -18,6 +18,8 @@
 
 from M2Crypto import RSA, DSA
 import hashlib, time, base64
+import six
+
 
 class Authpubtkt(object):
     filename = None
@@ -49,6 +51,9 @@ class Authpubtkt(object):
                     print("Exception in function base64.b64decode. File %s" % (__file__))
                     print("%s" % e)
             return False
+        if six.PY3:
+            # To avoid "TypeError: Unicode-objects must be encoded before hashing'
+            data = data.encode('utf-8')
         digest = hashlib.sha1(data).digest()
         if isinstance(self.pub_key, RSA.RSA_pub):
             try:
@@ -92,7 +97,9 @@ class Authpubtkt(object):
             ticket_keys[item.split("=")[0]] = item.split("=")[1]
 
         try:
-            if ticket_keys['validuntil'] < time.time():
+            if float(ticket_keys['validuntil']) < time.time():
+                if hasattr(self, "debug"):
+                    print("Ticket expired: %s" % ticket_keys['validuntil'])
                 # Ticket expired
                 return None
         except KeyError:

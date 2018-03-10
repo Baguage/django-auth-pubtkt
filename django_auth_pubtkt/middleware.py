@@ -17,6 +17,7 @@
 from django.contrib.auth.models import User, Group, AnonymousUser
 from django.conf import settings
 import urllib
+import six
 
 from django.utils.deprecation import MiddlewareMixin
 
@@ -42,7 +43,6 @@ class DjangoAuthPubtkt(MiddlewareMixin):
         """
         group, _ = Group.objects.get_or_create(name = group_name)
         group.user_set.add(user)
-        pass
 
     def process_request(self, request):
         cookie = request.COOKIES.get(self.TKT_AUTH_COOKIE_NAME, None)
@@ -53,7 +53,10 @@ class DjangoAuthPubtkt(MiddlewareMixin):
             # User is not authenticated
             return
 
-        cookie = urllib.unquote(cookie)
+        if six.PY2:
+            cookie = urllib.unquote(cookie)
+        else:
+            cookie = urllib.parse.unquote(cookie)
         params = self.authpubtkt.verify_cookie(cookie)
         if params is not None:
             username = params["uid"]

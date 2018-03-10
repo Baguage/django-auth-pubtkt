@@ -18,6 +18,7 @@
 from django.shortcuts import redirect
 from django.conf import settings
 import urllib
+import six
 
 def redirect_to_sso(request):
     back = request.is_secure() and 'https://' or 'http://'
@@ -28,7 +29,10 @@ def redirect_to_sso(request):
         back = back + request.get_host() + request.GET["next"]
     else:
         back = request.GET["next"]
-    back = urllib.quote_plus(back)
+    if six.PY2:
+        back = urllib.quote_plus(back)
+    else:
+        back = urllib.parse.quote_plus(back)
     try:
         TKT_AUTH_BACK_ARG_NAME = settings.TKT_AUTH_BACK_ARG_NAME
     except AttributeError:
