@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2013, 2017 Alexander Vyushkov
+# Copyright (c) 2013, 2017-2018 Alexander Vyushkov
 # All rights reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");

@@ -77,6 +77,7 @@ use @method_decorator(login_required(redirect_field_name="back"))
 
 # Configuration variables (settings.py)
 
+```
 TKT_AUTH_PUBLIC_KEY
 Default: None
 Filename of DSA public key in .pem format. It is used to verify ticket signature.
@@ -101,3 +102,4 @@ TKT_AUTH_ANONYMOUS_USER
 Default: True
 Add AnonymousUser object if no auth_pubtkt cookie is found. If set, django_auth_pubtkt can be used as a replacement to AuthenticationMiddleware.
 If disabled, AuthenticationMiddleware and django_auth_pubtkt can be used together.
+```
